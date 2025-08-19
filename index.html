@@ -1,6 +1,15 @@
 <!--
 Minyembeti IT 4U - Single-file landing page (index.html)
+How to use:
+ 1. Save this file as `index.html` on your computer.
+ 2. Open it in any browser to preview the site.
+ 3. If you want a tiny local Python webapp (Flask) to serve it, tell me and I'll provide the Flask app file.
+
+Notes:
+ - Contact form uses mailto: for simplicity (no backend needed).
+ - Replace placeholder phone/email/logo and copy where needed.
 -->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,10 +19,194 @@ Minyembeti IT 4U - Single-file landing page (index.html)
   <meta name="description" content="Minyembeti IT 4U — Reliable helpdesk, software support and enterprise IT services (Office 365 & Entra ID). Fast, trustworthy, South Africa." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-  /* styles omitted for brevity but will be same as the code above */
+    :root{
+      --accent:#0b76ef; /* blue */
+      --muted:#6b7280;
+      --bg:#0f1724;
+      --card:#0b1220;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,#071124, #071429 60%);} 
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;color:#012; font-weight:800}
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+    nav a{color:#cfe8ff;text-decoration:none;margin-left:18px;font-weight:600}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:20px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:16px;box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    .eyebrow{display:inline-block;background:var(--glass);padding:6px 10px;border-radius:999px;color:#9fb7d9;font-weight:600;font-size:13px}
+    h2{margin:12px 0 8px;font-size:28px}
+    p.lead{color:#bcd6f9;line-height:1.5}
+    .cta{display:flex;gap:12px;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfe8ff}
+
+    .features{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+    .feature-row{display:flex;gap:12px;align-items:flex-start}
+    .icon{width:46px;height:46px;border-radius:10px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .feature-row h4{margin:0 0 4px 0}
+    .feature-row p{margin:0;color:var(--muted);font-size:14px}
+
+    .right-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px}
+    .contact-quick{display:flex;flex-direction:column;gap:10px}
+    .contact-quick a{display:block;text-decoration:none;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);color:#dff2ff}
+
+    section.services{margin-top:26px}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .service{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px}
+
+    footer{margin-top:36px;padding:16px;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center}
+
+    /* responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.services-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.brand p{display:none}.services-grid{grid-template-columns:1fr}.container{padding:16px}.hero{gap:18px}}
+
+    /* subtle animation */
+    .logo{transform:rotate(-6deg);transition:transform .6s}
+    .logo:hover{transform:rotate(0)}
+    .fade-up{opacity:0;transform:translateY(8px);animation:fadeUp .7s forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* form */
+    form{display:flex;flex-direction:column;gap:8px}
+    input,textarea{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf6ff}
+    input::placeholder, textarea::placeholder{color:rgba(255,255,255,0.35)}
   </style>
 </head>
 <body>
-<!-- body content omitted for brevity but will be same as the code above -->
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">MI</div>
+        <div>
+          <h1>Minyembeti IT 4U</h1>
+          <p>Practical IT support • Office365 • Entra ID • Local & Enterprise</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <div class="hero-card fade-up">
+        <span class="eyebrow">Trusted • Fast • Local</span>
+        <h2>Get reliable IT support that actually solves problems</h2>
+        <p class="lead">Minyembeti IT 4U provides helpdesk & ticketing, software support and enterprise-grade services — including Office 365 migrations and Entra ID (Azure AD) management. Fast response, clear pricing and skilled engineers.</p>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Request help</a>
+          <a class="btn btn-ghost" href="#services">Our services</a>
+        </div>
+
+        <div class="features">
+          <div class="feature-row">
+            <div class="icon">⚡</div>
+            <div>
+              <h4>Quick helpdesk</h4>
+              <p>Remote or on-site support to get your team working again — fast ticketing and SLA-focused fixes.</p>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="icon">🔧</div>
+            <div>
+              <h4>Software & device support</h4>
+              <p>Installations, updates, printer & network troubleshooting, and user training when needed.</p>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="icon">🛡️</div>
+            <div>
+              <h4>Enterprise & cloud</h4>
+              <p>Office365, Exchange, Entra ID (Azure AD) setup and secure identity management for businesses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="right-card fade-up">
+        <h3 style="margin-top:0">Contact us</h3>
+        <div class="contact-quick">
+          <a href="tel:+27123456789">📞 Call: +27 12 345 6789</a>
+          <a href="mailto:hello@minyembeti.co.za">✉️ Email: hello@minyembeti.co.za</a>
+          <div style="font-size:13px;color:var(--muted)">Open hours: Mon–Fri, 08:00–17:00</div>
+        </div>
+
+        <hr style="margin:14px 0;border:0;border-top:1px solid rgba(255,255,255,0.03)">
+
+        <h4 style="margin:6px 0">Quick enquiry</h4>
+        <form id="contactForm" onsubmit="sendForm(event)">
+          <input id="name" placeholder="Your name" required />
+          <input id="email" type="email" placeholder="Your email" required />
+          <textarea id="message" rows="4" placeholder="Tell us briefly how we can help" required></textarea>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-primary" type="submit">Send email</button>
+            <button type="button" class="btn btn-ghost" onclick="copyPhone()">Copy phone</button>
+          </div>
+        </form>
+
+        <script>
+          function sendForm(e){
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const msg = document.getElementById('message').value.trim();
+            const subject = encodeURIComponent('Website enquiry from ' + name);
+            const body = encodeURIComponent(msg + '\n\nContact email: ' + email);
+            // open user's mail client with prefilled message
+            window.location.href = `mailto:hello@minyembeti.co.za?subject=${subject}&body=${body}`;
+          }
+          function copyPhone(){navigator.clipboard && navigator.clipboard.writeText('+27123456789').then(()=>alert('Phone copied to clipboard'))}
+        </script>
+      </aside>
+    </main>
+
+    <section id="services" class="services">
+      <div class="hero-card">
+        <h3>Services we offer</h3>
+        <div class="services-grid" style="margin-top:12px">
+          <div class="service">
+            <h4>Helpdesk & Managed Support</h4>
+            <p class="muted">Ticketing, remote support, SLA options, staff onboarding and monthly reporting. Ideal for small businesses and clinics.</p>
+          </div>
+          <div class="service">
+            <h4>Office 365 & Exchange</h4>
+            <p class="muted">Migration, setup, mailbox management, security, backup strategies and user training.</p>
+          </div>
+          <div class="service">
+            <h4>Entra ID / Azure AD</h4>
+            <p class="muted">Identity setup, single sign-on, conditional access and device management for secure corporate access.</p>
+          </div>
+          <div class="service">
+            <h4>Network & Infrastructure</h4>
+            <p class="muted">Wi‑Fi, switches, VLANs, firewall configuration, and on-site troubleshooting.</p>
+          </div>
+          <div class="service">
+            <h4>Device & Software Support</h4>
+            <p class="muted">PCs, Macs, printers, and business software support with proactive patching schedules.</p>
+          </div>
+          <div class="service">
+            <h4>Ad-hoc Projects</h4>
+            <p class="muted">Audits, migrations, small dev/integration work, and IT strategy sessions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        © <strong>Minyembeti IT 4U</strong> — Practical IT support • South Africa
+      </div>
+      <div style="color:var(--muted);font-size:13px">Designed to convert • Need changes? reply here and I’ll update it</div>
+    </footer>
+  </div>
 </body>
 </html>
