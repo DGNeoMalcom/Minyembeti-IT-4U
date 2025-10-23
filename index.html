@@ -1,178 +1,174 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
-export default function DGPreview() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Home");
-  const [cart, setCart] = useState([]);
-
-  const products = [
-    { id: 1, name: "Logitech MX Master 3", price: "R2,299", img: "https://images.unsplash.com/photo-1585386959984-a4155224f0f0?auto=format&fit=crop&w=800&q=60" },
-    { id: 2, name: "Dell UltraSharp 27", price: "R9,499", img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=60" },
-    { id: 3, name: "USB-C Docking Station", price: "R1,199", img: "https://images.unsplash.com/photo-1580747364659-0b0c6b6aa1c1?auto=format&fit=crop&w=800&q=60" },
-    { id: 4, name: "Business Laptop Sleeve", price: "R349", img: "https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&w=800&q=60" },
-  ];
-
-  const services = [
-    { title: "Procurement Solutions", desc: "End-to-end sourcing and supply management for your business." },
-    { title: "Device Trade-in", desc: "Easily upgrade and trade in your old devices for credit or recycling." },
-    { title: "IT Infrastructure", desc: "Hardware, networking, and installation services for SMEs and enterprises." },
-    { title: "E-commerce Enablement", desc: "Customized online portals and integrations for B2B customers." },
-  ];
-
-  const addToCart = (product) => setCart([...cart, product]);
-
-  const tabs = ["Home", "Products", "Solutions", "Services", "Support"];
-
+export default function DGStylePreview() {
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
-      {/* Top bar */}
-      <div className="bg-black text-white text-sm">
-        <div className="max-w-7xl mx-auto px-4 py-1 flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span>Free delivery over R999</span>
-            <a href="#" className="underline">Business Accounts</a>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="#" className="hover:underline">Sign in</a>
-            <a href="#" className="hover:underline">Help</a>
-          </div>
-        </div>
-      </div>
-
-      {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <button
-              className="sm:hidden p-2 rounded-md focus:outline-none"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-
-            <a href="#" className="flex items-center gap-3">
-              <motion.svg whileHover={{ rotate: 10 }} width="40" height="40" viewBox="0 0 24 24" className="text-indigo-600">
-                <rect width="24" height="24" rx="4" fill="#0f172a" />
-                <text x="12" y="16" textAnchor="middle" fontWeight="700" fontSize="12" fill="#fff">DG</text>
-              </motion.svg>
-              <span className="hidden sm:inline font-semibold text-lg">Digital Generation</span>
-            </a>
-
-            <nav className="hidden sm:flex gap-4">
-              {tabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`py-2 px-3 rounded-md transition-all ${activeTab === tab ? "bg-indigo-600 text-white" : "hover:text-indigo-600"}`}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2 }}
+      className="min-h-screen bg-gray-50 text-gray-900 font-sans overflow-x-hidden"
+    >
+      {/* Animated navigation */}
+      <motion.header
+        initial={{ y: -60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="bg-white shadow fixed top-0 left-0 right-0 z-50"
+      >
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-4">
+            <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.8 }} className="w-10 h-10 rounded bg-gradient-to-r from-blue-600 to-teal-400 flex items-center justify-center text-white font-bold cursor-pointer">DG</motion.div>
+            <nav className="hidden md:flex gap-6 text-sm font-medium">
+              {['Home', 'About', 'Services', 'Partners', 'Contact'].map((link) => (
+                <motion.a
+                  key={link}
+                  whileHover={{ color: '#2563eb', scale: 1.05 }}
+                  href={`#${link.toLowerCase()}`}
                 >
-                  {tab}
-                </button>
+                  {link}
+                </motion.a>
               ))}
             </nav>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <input className="hidden md:block border border-gray-200 rounded-md px-3 py-2 w-72 focus:ring-1 focus:ring-indigo-500" placeholder="Search..." />
-            <button className="p-2 rounded-md hover:bg-gray-100 relative">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18v4H3zM3 10h18v11H3z" />
-              </svg>
-              {cart.length > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">{cart.length}</span>}
-            </button>
+          </motion.div>
+          <div className="flex items-center gap-3">
+            <motion.button whileHover={{ scale: 1.05 }} className="hidden md:inline-block px-4 py-2 border rounded-lg text-sm">Shop</motion.button>
+            <motion.a whileHover={{ scale: 1.1 }} className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm shadow" href="#">Become a client</motion.a>
           </div>
         </div>
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="sm:hidden border-t overflow-hidden">
-              <div className="px-4 py-3 flex flex-col gap-2">
-                {tabs.map((tab) => (
-                  <button key={tab} onClick={() => setActiveTab(tab)} className="text-left">{tab}</button>
-                ))}
+      </motion.header>
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-32">
+        <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">Empowering business with tailored ICT solutions</h1>
+            <p className="mt-6 text-lg max-w-xl">We combine technology, people and purpose to deliver full-life-cycle solutions — device procurement, cloud, logistics and ongoing support for organisations across South Africa.</p>
+            <div className="mt-8 flex gap-4">
+              <motion.a whileHover={{ scale: 1.05 }} className="bg-blue-600 text-white px-5 py-3 rounded-lg shadow" href="#services">Explore more</motion.a>
+              <motion.a whileHover={{ scale: 1.05 }} className="px-5 py-3 rounded-lg border" href="#contact">Contact us</motion.a>
+            </div>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="mt-6 text-sm text-gray-600">Proudly Black Women-Owned • 20+ years of experience</motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="flex justify-center md:justify-end"
+          >
+            <motion.div whileHover={{ scale: 1.05 }} className="w-full max-w-md rounded-lg overflow-hidden shadow-lg bg-white">
+              <motion.img
+                alt="hero"
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=60"
+                className="w-full h-64 object-cover"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 2, ease: 'easeOut' }}
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Animated Key Services */}
+      <section id="services" className="max-w-7xl mx-auto px-6 py-16">
+        <motion.h2 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-2xl font-bold">Key services</motion.h2>
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-gray-600 mt-2 max-w-2xl">Full-service ICT: sales, cloud, logistics, contact & repair centres, and specialised asset services.</motion.p>
+
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            {title: 'Sales', body: 'Procurement and sourcing of devices, laptops, desktops and accessories.'},
+            {title: 'Cloud Services', body: 'IaaS, PaaS and SaaS solutions to modernise infrastructure.'},
+            {title: 'National Logistics', body: 'Nationwide delivery, warehousing and asset tracking.'},
+            {title: 'Repair Centre', body: 'Quality repairs and warranty services.'}
+          ].map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
+              whileHover={{ scale: 1.05, boxShadow: '0px 8px 24px rgba(0,0,0,0.1)' }}
+              className="bg-white rounded-lg p-6 shadow-sm cursor-pointer"
+            >
+              <motion.div className="h-12 w-12 rounded bg-gray-100 flex items-center justify-center font-semibold text-blue-600">{s.title.charAt(0)}</motion.div>
+              <h3 className="mt-4 font-semibold">{s.title}</h3>
+              <p className="mt-2 text-sm text-gray-600">{s.body}</p>
+              <a className="mt-4 inline-block text-sm text-blue-600" href="#">More info →</a>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Why choose DG section */}
+      <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} className="bg-white border-t">
+        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div whileHover={{ scale: 1.03 }}>
+            <h3 className="text-xl font-bold">We get IT Done</h3>
+            <p className="mt-3 text-gray-600">Efficiency, expertise and innovation — tailored solutions that enhance productivity and drive growth.</p>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.03 }}>
+            <h4 className="font-semibold">Trusted by</h4>
+            <div className="mt-4 flex flex-wrap gap-4 items-center">
+              {['Partner 1', 'Partner 2', 'Partner 3'].map((p) => (
+                <motion.div whileHover={{ scale: 1.1 }} key={p} className="w-36 h-12 bg-gray-100 flex items-center justify-center rounded shadow-sm">{p}</motion.div>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.03 }}>
+            <h4 className="font-semibold">Industry news</h4>
+            <ul className="mt-4 space-y-3 text-sm text-gray-600">
+              <li><a href="#" className="hover:text-blue-600">As the need for affordable, sustainable tech procurement grows, leasing is the solution</a></li>
+              <li><a href="#" className="hover:text-blue-600">What is sustainable technology?</a></li>
+            </ul>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Animated Footer */}
+      <motion.footer initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} id="contact" className="bg-gray-900 text-gray-200 mt-12">
+        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div whileHover={{ scale: 1.03 }}>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-teal-400 rounded flex items-center justify-center text-white font-bold">DG</div>
+              <div>
+                <div className="font-semibold">Digital Generation</div>
+                <div className="text-sm text-gray-400">Proudly Black Women-Owned • 20+ years</div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+            </div>
+            <p className="mt-4 text-sm text-gray-400">We combine innovation with purpose and always put people first. Partner with us for future-focused ICT solutions.</p>
+          </motion.div>
 
-      {/* Dynamic Content */}
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        <AnimatePresence mode="wait">
-          {activeTab === "Home" && (
-            <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <motion.section initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="rounded-2xl overflow-hidden shadow-md bg-gradient-to-r from-indigo-600 to-indigo-400 text-white p-8 mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold mb-2">Technology for business. Delivered.</h1>
-                <p className="mb-4 max-w-xl">From accessories to full setups — expert hardware and IT services to keep your business running efficiently.</p>
-                <div className="flex gap-3">
-                  <button onClick={() => setActiveTab("Products")} className="bg-white text-indigo-600 px-5 py-2 rounded-md font-semibold shadow-sm">Shop Now</button>
-                  <button onClick={() => setActiveTab("Services")} className="border border-white px-5 py-2 rounded-md">Our Services</button>
-                </div>
-              </motion.section>
+          <motion.div whileHover={{ scale: 1.03 }}>
+            <h5 className="font-semibold">Quicklinks</h5>
+            <ul className="mt-3 text-sm text-gray-400 space-y-2">
+              <li>About</li>
+              <li>Services</li>
+              <li>Partners</li>
+              <li>Shop</li>
+            </ul>
+          </motion.div>
 
-              <h2 className="text-xl font-semibold mb-4">Featured Products</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                {products.map((p) => (
-                  <motion.div whileHover={{ scale: 1.05 }} key={p.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
-                    <img src={p.img} alt={p.name} className="w-full h-40 object-cover" />
-                    <div className="p-4">
-                      <h3 className="font-medium text-sm mb-1">{p.name}</h3>
-                      <div className="flex items-center justify-between">
-                        <div className="font-semibold">{p.price}</div>
-                        <button onClick={() => addToCart(p)} className="text-sm px-3 py-1 border rounded-md hover:bg-indigo-600 hover:text-white transition">Add</button>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
+          <motion.div whileHover={{ scale: 1.03 }}>
+            <h5 className="font-semibold">Contact</h5>
+            <div className="mt-3 text-sm text-gray-400">
+              <div>info@dg.co.za</div>
+              <div className="mt-1">+27 11 123 4567</div>
+            </div>
+            <div className="mt-6 flex gap-3">
+              {['F', 'I', 'L'].map((icon) => (
+                <motion.div whileHover={{ scale: 1.2, rotate: 10 }} key={icon} className="w-8 h-8 bg-gray-700 rounded flex items-center justify-center">{icon}</motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
 
-          {activeTab === "Products" && (
-            <motion.div key="products" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <h2 className="text-2xl font-semibold mb-4">Our Products</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                {products.map((p) => (
-                  <motion.div whileHover={{ scale: 1.03 }} key={p.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
-                    <img src={p.img} alt={p.name} className="w-full h-40 object-cover" />
-                    <div className="p-4">
-                      <h3 className="font-medium text-sm mb-1">{p.name}</h3>
-                      <div className="flex items-center justify-between">
-                        <div className="font-semibold">{p.price}</div>
-                        <button onClick={() => addToCart(p)} className="text-sm px-3 py-1 border rounded-md hover:bg-indigo-600 hover:text-white">Add</button>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {activeTab === "Services" && (
-            <motion.div key="services" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <h2 className="text-2xl font-semibold mb-4">Our Key Services</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {services.map((s) => (
-                  <motion.div whileHover={{ scale: 1.02 }} key={s.title} className="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
-                    <p className="text-sm text-gray-600">{s.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {activeTab === "Support" && (
-            <motion.div key="support" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <h2 className="text-2xl font-semibold mb-4">Support & Contact</h2>
-              <p className="text-gray-600 mb-4">For assistance with your account, orders, or installations, please contact us below:</p>
-              <button className="bg-indigo-600 text-white px-5 py-2 rounded-md">Contact Support</button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </main>
-    </div>
+        <div className="border-t border-gray-800 text-center py-4 text-sm text-gray-500">© {new Date().getFullYear()} Digital Generation. Designed by Dutchink.</div>
+      </motion.footer>
+    </motion.div>
   );
 }
