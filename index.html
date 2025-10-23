@@ -1,174 +1,185 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Akinston Pty.ltd — IT Solutions, Helpdesk & Cloud Support</title>
+  <meta name="description" content="Akinston — Professional helpdesk, cloud services and enterprise IT solutions (Office 365 & Entra ID). Trusted IT partner in South Africa." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#0057d8;
+      --muted:#555;
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --glass: rgba(0,0,0,0.05);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#1a1a1a;background:var(--bg);} 
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#38bdf8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px}
+    .brand h1{margin:0;font-size:20px;color:#111}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+    nav a{color:var(--accent);text-decoration:none;margin-left:18px;font-weight:600;cursor:pointer}
 
-export default function DGStylePreview() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.2 }}
-      className="min-h-screen bg-gray-50 text-gray-900 font-sans overflow-x-hidden"
-    >
-      {/* Animated navigation */}
-      <motion.header
-        initial={{ y: -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="bg-white shadow fixed top-0 left-0 right-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-4">
-            <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.8 }} className="w-10 h-10 rounded bg-gradient-to-r from-blue-600 to-teal-400 flex items-center justify-center text-white font-bold cursor-pointer">DG</motion.div>
-            <nav className="hidden md:flex gap-6 text-sm font-medium">
-              {['Home', 'About', 'Services', 'Partners', 'Contact'].map((link) => (
-                <motion.a
-                  key={link}
-                  whileHover={{ color: '#2563eb', scale: 1.05 }}
-                  href={`#${link.toLowerCase()}`}
-                >
-                  {link}
-                </motion.a>
-              ))}
-            </nav>
-          </motion.div>
-          <div className="flex items-center gap-3">
-            <motion.button whileHover={{ scale: 1.05 }} className="hidden md:inline-block px-4 py-2 border rounded-lg text-sm">Shop</motion.button>
-            <motion.a whileHover={{ scale: 1.1 }} className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm shadow" href="#">Become a client</motion.a>
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:20px}
+    .hero-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,0.1)}
+    .eyebrow{display:inline-block;background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--accent);font-weight:600;font-size:13px}
+    h2{margin:12px 0 8px;font-size:30px;color:#111}
+    p.lead{color:#333;line-height:1.5}
+    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700;text-decoration:none;display:inline-block}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+
+    .features{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+    .feature-row{display:flex;gap:12px;align-items:flex-start}
+    .icon{width:46px;height:46px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
+    .feature-row h4{margin:0 0 4px 0;color:#111}
+    .feature-row p{margin:0;color:var(--muted);font-size:14px}
+
+    .right-card{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+    .contact-quick{display:flex;flex-direction:column;gap:10px}
+    .contact-quick a{display:block;text-decoration:none;padding:12px;border-radius:10px;background:var(--glass);color:#111;font-weight:500}
+
+    section.services{margin-top:26px}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .service{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+    #pricing-section, #about-section {display:none;}
+
+    footer{margin-top:36px;padding:16px;border-top:1px solid rgba(0,0,0,0.1);text-align:center;color:#555}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">AK</div>
+        <div>
+          <h1>Akinston</h1>
+          <p>Professional IT Solutions • Office365 • Entra ID • Cloud & Networking</p>
+        </div>
+      </div>
+      <nav>
+        <a onclick="toggleSection('services')">Services</a>
+        <a onclick="toggleSection('about-section')">About</a>
+        <a onclick="toggleSection('contact')">Contact</a>
+        <a onclick="toggleSection('pricing-section')">Pricing</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <div class="hero-card fade-up">
+        <span class="eyebrow">Trusted • Efficient • Since 2020</span>
+        <h2>Smart IT support that keeps your business moving</h2>
+        <p class="lead">Akinston provides focused helpdesk solutions, cloud services with Office 365 & Entra ID, and secure networking support. Since 2020, we’ve built trust through professional, transparent, and reliable service.</p>
+
+        <div class="cta">
+          <a class="btn btn-primary" onclick="toggleSection('contact')">Get support</a>
+          <a class="btn btn-ghost" onclick="toggleSection('services')">Our services</a>
+          <a class="btn btn-ghost" onclick="toggleSection('pricing-section')">View pricing</a>
+          <a class="btn btn-ghost" onclick="toggleSection('about-section')">About us</a>
+        </div>
+      </div>
+
+      <aside id="contact" class="right-card fade-up">
+        <h3 style="margin-top:0">Contact us</h3>
+        <div class="contact-quick">
+          <a href="tel:+27792568339">📞 Call: +27 79 256 8339</a>
+          <a href="tel:+27733014988">📞 Call: +27 75 260 5225</a>
+          <a href="mailto:Akinstonptyltd@Gmail.com">✉️ Email: Akinstonptyltd@Gmail.com</a>
+          <div style="font-size:13px;color:var(--muted)">Open hours: Mon–Fri, 08:00–17:00</div>
+        </div>
+      </aside>
+    </main>
+
+    <section id="services" class="services">
+      <div class="hero-card">
+        <h3>Our Core Services</h3>
+        <div class="services-grid" style="margin-top:12px">
+          <div class="service">
+            <h4>Helpdesk & Managed Support</h4>
+            <p>Ticketing, remote support, SLA-driven services, onboarding and reporting.</p>
+          </div>
+          <div class="service">
+            <h4>Microsoft 365 & Entra ID</h4>
+            <p>Setup, migration, mailbox & identity management with top-level security.</p>
+          </div>
+          <div class="service">
+            <h4>Networking & Infrastructure</h4>
+            <p>Wi-Fi, switches, firewalls and secure corporate networking solutions.</p>
           </div>
         </div>
-      </motion.header>
+      </div>
+    </section>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-32">
-        <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <motion.div
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">Empowering business with tailored ICT solutions</h1>
-            <p className="mt-6 text-lg max-w-xl">We combine technology, people and purpose to deliver full-life-cycle solutions — device procurement, cloud, logistics and ongoing support for organisations across South Africa.</p>
-            <div className="mt-8 flex gap-4">
-              <motion.a whileHover={{ scale: 1.05 }} className="bg-blue-600 text-white px-5 py-3 rounded-lg shadow" href="#services">Explore more</motion.a>
-              <motion.a whileHover={{ scale: 1.05 }} className="px-5 py-3 rounded-lg border" href="#contact">Contact us</motion.a>
-            </div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="mt-6 text-sm text-gray-600">Proudly Black Women-Owned • 20+ years of experience</motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="flex justify-center md:justify-end"
-          >
-            <motion.div whileHover={{ scale: 1.05 }} className="w-full max-w-md rounded-lg overflow-hidden shadow-lg bg-white">
-              <motion.img
-                alt="hero"
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=60"
-                className="w-full h-64 object-cover"
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 2, ease: 'easeOut' }}
-              />
-            </motion.div>
-          </motion.div>
+    <section id="pricing-section" class="services">
+      <div class="hero-card">
+        <h3>Pricing Overview</h3>
+        <p style="color:#333">Licenses and software costs are purchased directly by the client — we help guide and manage them, but you pay vendors directly (no hidden markup). Our fees only cover setup and ongoing support.</p>
+        <div class="services-grid" style="margin-top:12px">
+          <div class="service">
+            <h4>Microsoft 365</h4>
+            <p>Business Basic: R1,400 – R1,800 per user/year<br>
+               Business Standard: R2,500 – R3,200 per user/year<br>
+               Business Premium: R3,800 – R4,800 per user/year</p>
+          </div>
+          <div class="service">
+            <h4>Azure / Entra ID</h4>
+            <p>Premium P1: R140 – R160 per user/month<br>
+               Premium P2: R220 – R250 per user/month<br>
+               Small VM/Storage: R1,000 – R5,000 per month (usage-based)</p>
+          </div>
+          <div class="service">
+            <h4>Security & Backup</h4>
+            <p>Antivirus (per device/month): R50 – R80<br>
+               Veeam O365 Backup: R40 – R60 per user/month</p>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Animated Key Services */}
-      <section id="services" className="max-w-7xl mx-auto px-6 py-16">
-        <motion.h2 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-2xl font-bold">Key services</motion.h2>
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-gray-600 mt-2 max-w-2xl">Full-service ICT: sales, cloud, logistics, contact & repair centres, and specialised asset services.</motion.p>
-
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            {title: 'Sales', body: 'Procurement and sourcing of devices, laptops, desktops and accessories.'},
-            {title: 'Cloud Services', body: 'IaaS, PaaS and SaaS solutions to modernise infrastructure.'},
-            {title: 'National Logistics', body: 'Nationwide delivery, warehousing and asset tracking.'},
-            {title: 'Repair Centre', body: 'Quality repairs and warranty services.'}
-          ].map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2, duration: 0.6 }}
-              whileHover={{ scale: 1.05, boxShadow: '0px 8px 24px rgba(0,0,0,0.1)' }}
-              className="bg-white rounded-lg p-6 shadow-sm cursor-pointer"
-            >
-              <motion.div className="h-12 w-12 rounded bg-gray-100 flex items-center justify-center font-semibold text-blue-600">{s.title.charAt(0)}</motion.div>
-              <h3 className="mt-4 font-semibold">{s.title}</h3>
-              <p className="mt-2 text-sm text-gray-600">{s.body}</p>
-              <a className="mt-4 inline-block text-sm text-blue-600" href="#">More info →</a>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Why choose DG section */}
-      <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} className="bg-white border-t">
-        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div whileHover={{ scale: 1.03 }}>
-            <h3 className="text-xl font-bold">We get IT Done</h3>
-            <p className="mt-3 text-gray-600">Efficiency, expertise and innovation — tailored solutions that enhance productivity and drive growth.</p>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.03 }}>
-            <h4 className="font-semibold">Trusted by</h4>
-            <div className="mt-4 flex flex-wrap gap-4 items-center">
-              {['Partner 1', 'Partner 2', 'Partner 3'].map((p) => (
-                <motion.div whileHover={{ scale: 1.1 }} key={p} className="w-36 h-12 bg-gray-100 flex items-center justify-center rounded shadow-sm">{p}</motion.div>
-              ))}
-            </div>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.03 }}>
-            <h4 className="font-semibold">Industry news</h4>
-            <ul className="mt-4 space-y-3 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-blue-600">As the need for affordable, sustainable tech procurement grows, leasing is the solution</a></li>
-              <li><a href="#" className="hover:text-blue-600">What is sustainable technology?</a></li>
+    <section id="about-section" class="services">
+      <div class="hero-card">
+        <h3>About Akinston</h3>
+        <p>Founded in 2020, Akinston focuses on providing businesses with reliable, transparent, and professional IT services. We believe in empowering organizations with the right technology while keeping costs clear and predictable.</p>
+        <p>We specialize in three core areas: Helpdesk support for day-to-day operations, Cloud services with Microsoft 365 and Entra ID, and secure Networking solutions. Our mission is to ensure your business runs smoothly, securely, and efficiently without over-promising, but by delivering quality support every time.</p>
+        <h4>What We Will Do (High-Level Steps)</h4>
+        <ol>
+          <li><strong>Meet & Understand Your Needs</strong> – Quick discussion to learn about your current setup, pain points, and goals.</li>
+          <li><strong>Assessment</strong> – Simple check of your current computers, network, and email systems (no disruption to your work).</li>
+          <li><strong>Proposal & Budget</strong> – We show you a clear cost breakdown:
+            <ul>
+              <li>Licenses and software (e.g., Microsoft 365 for email and apps)</li>
+              <li>Any hardware or upgrades you might need (if any)</li>
+              <li>Our setup time and monthly support fee</li>
             </ul>
-          </motion.div>
-        </div>
-      </motion.section>
+          </li>
+          <li><strong>Approval & Ordering</strong> – Using your approved budget, we order the licenses and equipment.</li>
+          <li><strong>Setup & Migration</strong> – We configure everything, move your email or files if needed, and train your team.</li>
+          <li><strong>Handover & Support</strong> – We provide simple instructions, contact info for help, and ongoing support under a service agreement.</li>
+        </ol>
+      </div>
+    </section>
 
-      {/* Animated Footer */}
-      <motion.footer initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} id="contact" className="bg-gray-900 text-gray-200 mt-12">
-        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div whileHover={{ scale: 1.03 }}>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-teal-400 rounded flex items-center justify-center text-white font-bold">DG</div>
-              <div>
-                <div className="font-semibold">Digital Generation</div>
-                <div className="text-sm text-gray-400">Proudly Black Women-Owned • 20+ years</div>
-              </div>
-            </div>
-            <p className="mt-4 text-sm text-gray-400">We combine innovation with purpose and always put people first. Partner with us for future-focused ICT solutions.</p>
-          </motion.div>
+    <footer>
+      <p><strong>Akinston</strong> — Professional IT Support • South Africa</p>
+      <p>BEE Status: Level 1 | Company Start: 10/11/2020 | Registration No: 2020/854767/07</p>
+      <p>© 2025 Akinston. All rights reserved.</p>
+    </footer>
+  </div>
 
-          <motion.div whileHover={{ scale: 1.03 }}>
-            <h5 className="font-semibold">Quicklinks</h5>
-            <ul className="mt-3 text-sm text-gray-400 space-y-2">
-              <li>About</li>
-              <li>Services</li>
-              <li>Partners</li>
-              <li>Shop</li>
-            </ul>
-          </motion.div>
-
-          <motion.div whileHover={{ scale: 1.03 }}>
-            <h5 className="font-semibold">Contact</h5>
-            <div className="mt-3 text-sm text-gray-400">
-              <div>info@dg.co.za</div>
-              <div className="mt-1">+27 11 123 4567</div>
-            </div>
-            <div className="mt-6 flex gap-3">
-              {['F', 'I', 'L'].map((icon) => (
-                <motion.div whileHover={{ scale: 1.2, rotate: 10 }} key={icon} className="w-8 h-8 bg-gray-700 rounded flex items-center justify-center">{icon}</motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="border-t border-gray-800 text-center py-4 text-sm text-gray-500">© {new Date().getFullYear()} Digital Generation. Designed by Dutchink.</div>
-      </motion.footer>
-    </motion.div>
-  );
-}
+  <script>
+    function toggleSection(id){
+      const sections = ['services','pricing-section','about-section'];
+      sections.forEach(sec => {
+        const el = document.getElementById(sec);
+        if(el){ el.style.display = (sec === id) ? 'block' : 'none'; }
+      });
+    }
+  </script>
+</body>
+</html>
