@@ -1,222 +1,178 @@
 import React, { useState } from "react";
-
 import { motion, AnimatePresence } from "framer-motion";
- 
+
 export default function DGPreview() {
-
   const [mobileOpen, setMobileOpen] = useState(false);
-
   const [activeTab, setActiveTab] = useState("Home");
-
   const [cart, setCart] = useState([]);
- 
+
   const products = [
-
-    { id: 1, name: "Logitech MX Master 3", price: "R2,299", img: "https://images.unsplash.com/photo-1585386959984-a4155224f0f0?auto=format&fit=crop&w=800&q=60%22 },
-
-    { id: 2, name: "Dell UltraSharp 27", price: "R9,499", img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=60%22 },
-
-    { id: 3, name: "USB-C Docking Station", price: "R1,199", img: "https://images.unsplash.com/photo-1580747364659-0b0c6b6aa1c1?auto=format&fit=crop&w=800&q=60%22 },
-
-    { id: 4, name: "Business Laptop Sleeve", price: "R349", img: "https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&w=800&q=60%22 },
-
+    { id: 1, name: "Logitech MX Master 3", price: "R2,299", img: "https://images.unsplash.com/photo-1585386959984-a4155224f0f0?auto=format&fit=crop&w=800&q=60" },
+    { id: 2, name: "Dell UltraSharp 27", price: "R9,499", img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=60" },
+    { id: 3, name: "USB-C Docking Station", price: "R1,199", img: "https://images.unsplash.com/photo-1580747364659-0b0c6b6aa1c1?auto=format&fit=crop&w=800&q=60" },
+    { id: 4, name: "Business Laptop Sleeve", price: "R349", img: "https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&w=800&q=60" },
   ];
- 
+
   const services = [
-
     { title: "Procurement Solutions", desc: "End-to-end sourcing and supply management for your business." },
-
     { title: "Device Trade-in", desc: "Easily upgrade and trade in your old devices for credit or recycling." },
-
     { title: "IT Infrastructure", desc: "Hardware, networking, and installation services for SMEs and enterprises." },
-
     { title: "E-commerce Enablement", desc: "Customized online portals and integrations for B2B customers." },
-
   ];
- 
+
   const addToCart = (product) => setCart([...cart, product]);
- 
+
   const tabs = ["Home", "Products", "Solutions", "Services", "Support"];
- 
+
   return (
-<div className="min-h-screen bg-gray-50 font-sans text-gray-800">
-
+    <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
       {/* Top bar */}
-<div className="bg-black text-white text-sm">
-<div className="max-w-7xl mx-auto px-4 py-1 flex justify-between items-center">
-<div className="flex items-center gap-4">
-<span>Free delivery over R999</span>
-<a href="#" className="underline">Business Accounts</a>
-</div>
-<div className="flex items-center gap-4">
-<a href="#" className="hover:underline">Sign in</a>
-<a href="#" className="hover:underline">Help</a>
-</div>
-</div>
-</div>
- 
-      {/* Header */}
-<header className="bg-white shadow-sm sticky top-0 z-40">
-<div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-<div className="flex items-center gap-6">
-<button
-
-              className="sm:hidden p-2 rounded-md focus:outline-none"
-
-              onClick={() => setMobileOpen(!mobileOpen)}
-
-              aria-label="Toggle menu"
->
-<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-</svg>
-</button>
- 
-            <a href="#" className="flex items-center gap-3">
-<motion.svg whileHover={{ rotate: 10 }} width="40" height="40" viewBox="0 0 24 24" className="text-indigo-600">
-<rect width="24" height="24" rx="4" fill="#0f172a" />
-<text x="12" y="16" textAnchor="middle" fontWeight="700" fontSize="12" fill="#fff">DG</text>
-</motion.svg>
-<span className="hidden sm:inline font-semibold text-lg">Digital Generation</span>
-</a>
- 
-            <nav className="hidden sm:flex gap-4">
-
-              {tabs.map((tab) => (
-<button
-
-                  key={tab}
-
-                  onClick={() => setActiveTab(tab)}
-
-                  className={`py-2 px-3 rounded-md transition-all ${activeTab === tab ? "bg-indigo-600 text-white" : "hover:text-indigo-600"}`}
->
-
-                  {tab}
-</button>
-
-              ))}
-</nav>
-</div>
- 
+      <div className="bg-black text-white text-sm">
+        <div className="max-w-7xl mx-auto px-4 py-1 flex justify-between items-center">
           <div className="flex items-center gap-4">
-<input className="hidden md:block border border-gray-200 rounded-md px-3 py-2 w-72 focus:ring-1 focus:ring-indigo-500" placeholder="Search..." />
-<button className="p-2 rounded-md hover:bg-gray-100 relative">
-<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18v4H3zM3 10h18v11H3z" />
-</svg>
+            <span>Free delivery over R999</span>
+            <a href="#" className="underline">Business Accounts</a>
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="#" className="hover:underline">Sign in</a>
+            <a href="#" className="hover:underline">Help</a>
+          </div>
+        </div>
+      </div>
 
+      {/* Header */}
+      <header className="bg-white shadow-sm sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <button
+              className="sm:hidden p-2 rounded-md focus:outline-none"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+
+            <a href="#" className="flex items-center gap-3">
+              <motion.svg whileHover={{ rotate: 10 }} width="40" height="40" viewBox="0 0 24 24" className="text-indigo-600">
+                <rect width="24" height="24" rx="4" fill="#0f172a" />
+                <text x="12" y="16" textAnchor="middle" fontWeight="700" fontSize="12" fill="#fff">DG</text>
+              </motion.svg>
+              <span className="hidden sm:inline font-semibold text-lg">Digital Generation</span>
+            </a>
+
+            <nav className="hidden sm:flex gap-4">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`py-2 px-3 rounded-md transition-all ${activeTab === tab ? "bg-indigo-600 text-white" : "hover:text-indigo-600"}`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <input className="hidden md:block border border-gray-200 rounded-md px-3 py-2 w-72 focus:ring-1 focus:ring-indigo-500" placeholder="Search..." />
+            <button className="p-2 rounded-md hover:bg-gray-100 relative">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18v4H3zM3 10h18v11H3z" />
+              </svg>
               {cart.length > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">{cart.length}</span>}
-</button>
-</div>
-</div>
-<AnimatePresence>
-
+            </button>
+          </div>
+        </div>
+        <AnimatePresence>
           {mobileOpen && (
-<motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="sm:hidden border-t overflow-hidden">
-<div className="px-4 py-3 flex flex-col gap-2">
-
+            <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="sm:hidden border-t overflow-hidden">
+              <div className="px-4 py-3 flex flex-col gap-2">
                 {tabs.map((tab) => (
-<button key={tab} onClick={() => setActiveTab(tab)} className="text-left">{tab}</button>
-
+                  <button key={tab} onClick={() => setActiveTab(tab)} className="text-left">{tab}</button>
                 ))}
-</div>
-</motion.div>
-
+              </div>
+            </motion.div>
           )}
-</AnimatePresence>
-</header>
- 
+        </AnimatePresence>
+      </header>
+
       {/* Dynamic Content */}
-<main className="max-w-7xl mx-auto px-4 py-8">
-<AnimatePresence mode="wait">
-
+      <main className="max-w-7xl mx-auto px-4 py-8">
+        <AnimatePresence mode="wait">
           {activeTab === "Home" && (
-<motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-<motion.section initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="rounded-2xl overflow-hidden shadow-md bg-gradient-to-r from-indigo-600 to-indigo-400 text-white p-8 mb-8">
-<h1 className="text-3xl md:text-4xl font-bold mb-2">Technology for business. Delivered.</h1>
-<p className="mb-4 max-w-xl">From accessories to full setups — expert hardware and IT services to keep your business running efficiently.</p>
-<div className="flex gap-3">
-<button onClick={() => setActiveTab("Products")} className="bg-white text-indigo-600 px-5 py-2 rounded-md font-semibold shadow-sm">Shop Now</button>
-<button onClick={() => setActiveTab("Services")} className="border border-white px-5 py-2 rounded-md">Our Services</button>
-</div>
-</motion.section>
- 
+            <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <motion.section initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="rounded-2xl overflow-hidden shadow-md bg-gradient-to-r from-indigo-600 to-indigo-400 text-white p-8 mb-8">
+                <h1 className="text-3xl md:text-4xl font-bold mb-2">Technology for business. Delivered.</h1>
+                <p className="mb-4 max-w-xl">From accessories to full setups — expert hardware and IT services to keep your business running efficiently.</p>
+                <div className="flex gap-3">
+                  <button onClick={() => setActiveTab("Products")} className="bg-white text-indigo-600 px-5 py-2 rounded-md font-semibold shadow-sm">Shop Now</button>
+                  <button onClick={() => setActiveTab("Services")} className="border border-white px-5 py-2 rounded-md">Our Services</button>
+                </div>
+              </motion.section>
+
               <h2 className="text-xl font-semibold mb-4">Featured Products</h2>
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {products.map((p) => (
-<motion.div whileHover={{ scale: 1.05 }} key={p.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
-<img src={p.img} alt={p.name} className="w-full h-40 object-cover" />
-<div className="p-4">
-<h3 className="font-medium text-sm mb-1">{p.name}</h3>
-<div className="flex items-center justify-between">
-<div className="font-semibold">{p.price}</div>
-<button onClick={() => addToCart(p)} className="text-sm px-3 py-1 border rounded-md hover:bg-indigo-600 hover:text-white transition">Add</button>
-</div>
-</div>
-</motion.div>
-
+                  <motion.div whileHover={{ scale: 1.05 }} key={p.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src={p.img} alt={p.name} className="w-full h-40 object-cover" />
+                    <div className="p-4">
+                      <h3 className="font-medium text-sm mb-1">{p.name}</h3>
+                      <div className="flex items-center justify-between">
+                        <div className="font-semibold">{p.price}</div>
+                        <button onClick={() => addToCart(p)} className="text-sm px-3 py-1 border rounded-md hover:bg-indigo-600 hover:text-white transition">Add</button>
+                      </div>
+                    </div>
+                  </motion.div>
                 ))}
-</div>
-</motion.div>
-
+              </div>
+            </motion.div>
           )}
- 
+
           {activeTab === "Products" && (
-<motion.div key="products" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-<h2 className="text-2xl font-semibold mb-4">Our Products</h2>
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-
+            <motion.div key="products" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <h2 className="text-2xl font-semibold mb-4">Our Products</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {products.map((p) => (
-<motion.div whileHover={{ scale: 1.03 }} key={p.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
-<img src={p.img} alt={p.name} className="w-full h-40 object-cover" />
-<div className="p-4">
-<h3 className="font-medium text-sm mb-1">{p.name}</h3>
-<div className="flex items-center justify-between">
-<div className="font-semibold">{p.price}</div>
-<button onClick={() => addToCart(p)} className="text-sm px-3 py-1 border rounded-md hover:bg-indigo-600 hover:text-white">Add</button>
-</div>
-</div>
-</motion.div>
-
+                  <motion.div whileHover={{ scale: 1.03 }} key={p.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src={p.img} alt={p.name} className="w-full h-40 object-cover" />
+                    <div className="p-4">
+                      <h3 className="font-medium text-sm mb-1">{p.name}</h3>
+                      <div className="flex items-center justify-between">
+                        <div className="font-semibold">{p.price}</div>
+                        <button onClick={() => addToCart(p)} className="text-sm px-3 py-1 border rounded-md hover:bg-indigo-600 hover:text-white">Add</button>
+                      </div>
+                    </div>
+                  </motion.div>
                 ))}
-</div>
-</motion.div>
-
+              </div>
+            </motion.div>
           )}
- 
+
           {activeTab === "Services" && (
-<motion.div key="services" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-<h2 className="text-2xl font-semibold mb-4">Our Key Services</h2>
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+            <motion.div key="services" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <h2 className="text-2xl font-semibold mb-4">Our Key Services</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {services.map((s) => (
-<motion.div whileHover={{ scale: 1.02 }} key={s.title} className="bg-white p-6 rounded-lg shadow-sm">
-<h3 className="font-semibold text-lg mb-2">{s.title}</h3>
-<p className="text-sm text-gray-600">{s.desc}</p>
-</motion.div>
-
+                  <motion.div whileHover={{ scale: 1.02 }} key={s.title} className="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
+                    <p className="text-sm text-gray-600">{s.desc}</p>
+                  </motion.div>
                 ))}
-</div>
-</motion.div>
-
+              </div>
+            </motion.div>
           )}
- 
+
           {activeTab === "Support" && (
-<motion.div key="support" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-<h2 className="text-2xl font-semibold mb-4">Support & Contact</h2>
-<p className="text-gray-600 mb-4">For assistance with your account, orders, or installations, please contact us below:</p>
-<button className="bg-indigo-600 text-white px-5 py-2 rounded-md">Contact Support</button>
-</motion.div>
-
+            <motion.div key="support" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <h2 className="text-2xl font-semibold mb-4">Support & Contact</h2>
+              <p className="text-gray-600 mb-4">For assistance with your account, orders, or installations, please contact us below:</p>
+              <button className="bg-indigo-600 text-white px-5 py-2 rounded-md">Contact Support</button>
+            </motion.div>
           )}
-</AnimatePresence>
-</main>
-</div>
-
+        </AnimatePresence>
+      </main>
+    </div>
   );
-
 }
-
- 
