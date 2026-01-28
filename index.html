@@ -3,183 +3,282 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minyembeti.ltd — IT Solutions, Helpdesk & Cloud Support</title>
-  <meta name="description" content="Minyembeti — Professional helpdesk, cloud services and enterprise IT solutions (Office 365 & Entra ID). Trusted IT partner in South Africa." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <title>Minyembeti Ltd — Professional IT Solutions</title>
+
+  <meta name="description" content="Minyembeti Ltd — Professional IT support, Microsoft 365, Entra ID, Cloud and Networking solutions in South Africa." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --accent:#0057d8;
-      --muted:#555;
-      --bg:#f9fafb;
+      --primary:#0a5cff;
+      --primary-soft:#e8f0ff;
+      --secondary:#22c55e;
+      --text:#0f172a;
+      --muted:#64748b;
+      --bg:#f8fafc;
       --card:#ffffff;
-      --glass: rgba(0,0,0,0.05);
+      --glass: rgba(15,23,42,0.06);
+      --gradient: linear-gradient(135deg,#0a5cff,#38bdf8);
     }
+
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#1a1a1a;background:var(--bg);} 
-    .container{max-width:1100px;margin:0 auto;padding:28px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    html,body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .container{max-width:1100px;margin:0 auto;padding:32px}
+
+    /* Header */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:32px;
+    }
+
     .brand{display:flex;gap:14px;align-items:center}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#38bdf8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px}
-    .brand h1{margin:0;font-size:20px;color:#111}
-    .brand p{margin:0;color:var(--muted);font-size:13px}
-    nav a{color:var(--accent);text-decoration:none;margin-left:18px;font-weight:600;cursor:pointer}
+    .logo{
+      width:56px;height:56px;border-radius:14px;
+      background:var(--gradient);
+      display:flex;align-items:center;justify-content:center;
+      color:white;font-weight:800;font-size:20px;
+    }
+    .brand h1{margin:0;font-size:20px}
+    .brand p{margin:0;font-size:13px;color:var(--muted)}
 
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:20px}
-    .hero-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,0.1)}
-    .eyebrow{display:inline-block;background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--accent);font-weight:600;font-size:13px}
-    h2{margin:12px 0 8px;font-size:30px;color:#111}
-    p.lead{color:#333;line-height:1.5}
-    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .btn{padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700;text-decoration:none;display:inline-block}
-    .btn-primary{background:var(--accent);color:white}
-    .btn-ghost{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+    nav a{
+      margin-left:18px;
+      text-decoration:none;
+      font-weight:600;
+      color:var(--primary);
+      cursor:pointer;
+    }
 
-    .features{display:flex;flex-direction:column;gap:12px;margin-top:18px}
-    .feature-row{display:flex;gap:12px;align-items:flex-start}
-    .icon{width:46px;height:46px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
-    .feature-row h4{margin:0 0 4px 0;color:#111}
-    .feature-row p{margin:0;color:var(--muted);font-size:14px}
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:32px;
+      align-items:center;
+    }
 
-    .right-card{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
-    .contact-quick{display:flex;flex-direction:column;gap:10px}
-    .contact-quick a{display:block;text-decoration:none;padding:12px;border-radius:10px;background:var(--glass);color:#111;font-weight:500}
+    .hero-card{
+      background:var(--card);
+      padding:32px;
+      border-radius:18px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.08);
+    }
 
-    section.services{margin-top:26px}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .service{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+    .eyebrow{
+      display:inline-block;
+      background:var(--primary-soft);
+      color:var(--primary);
+      padding:6px 12px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:13px;
+    }
 
-    #pricing-section, #about-section {display:none;}
+    h2{font-size:34px;margin:14px 0 10px}
+    p.lead{color:#334155;line-height:1.6}
 
-    footer{margin-top:36px;padding:16px;border-top:1px solid rgba(0,0,0,0.1);text-align:center;color:#555}
+    .cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+    .btn{
+      padding:12px 18px;
+      border-radius:14px;
+      border:0;
+      cursor:pointer;
+      font-weight:700;
+      text-decoration:none;
+    }
+    .btn-primary{
+      background:var(--gradient);
+      color:white;
+    }
+    .btn-ghost{
+      background:white;
+      border:1px solid var(--primary);
+      color:var(--primary);
+    }
+    .btn-ghost:hover{background:var(--primary-soft)}
+
+    /* Contact card */
+    .right-card{
+      background:var(--card);
+      padding:24px;
+      border-radius:16px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .contact-quick a{
+      display:block;
+      text-decoration:none;
+      background:var(--glass);
+      padding:12px;
+      border-radius:12px;
+      color:var(--text);
+      margin-bottom:10px;
+      font-weight:500;
+    }
+
+    /* Sections */
+    section{
+      margin-top:64px;
+    }
+
+    section::before{
+      content:"";
+      display:block;
+      height:1px;
+      background:linear-gradient(to right, transparent, #cbd5f5, transparent);
+      margin-bottom:40px;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:16px;
+    }
+
+    .service{
+      background:var(--card);
+      padding:22px;
+      border-radius:16px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+      transition:all .25s ease;
+    }
+
+    .service:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 42px rgba(0,0,0,0.12);
+    }
+
+    footer{
+      margin-top:80px;
+      padding:24px;
+      border-top:1px solid rgba(0,0,0,0.08);
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* Animations */
+    .fade-up{
+      animation:fadeUp .6s ease forwards;
+    }
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(14px)}
+      to{opacity:1;transform:none}
+    }
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      nav{display:none}
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
+
     <header>
       <div class="brand">
-        <div class="logo">AK</div>
+        <div class="logo">ML</div>
         <div>
-          <h1>Minyembeti</h1>
-          <p>Professional IT Solutions • Office365 • Entra ID • Cloud & Networking</p>
+          <h1>Minyembeti Ltd</h1>
+          <p>IT Support • Microsoft 365 • Entra ID • Cloud & Networking</p>
         </div>
       </div>
-      <nav>
-        <a onclick="toggleSection('services')">Services</a>
-        <a onclick="toggleSection('about-section')">About</a>
-        <a onclick="toggleSection('contact')">Contact</a>
-        <a onclick="toggleSection('pricing-section')">Pricing</a>
-      </nav>
     </header>
 
     <main class="hero">
       <div class="hero-card fade-up">
-        <span class="eyebrow">Trusted • Efficient • Since 2020</span>
-        <h2>Smart IT support that keeps your business moving</h2>
-        <p class="lead">Akinston provides focused helpdesk solutions, cloud services with Office 365 & Entra ID, and secure networking support. Since 2020, we’ve built trust through professional, transparent, and reliable service.</p>
+        <span class="eyebrow">Trusted IT Partner • Since 2020</span>
+        <h2>Smart IT support that keeps your business running</h2>
+        <p class="lead">
+          Minyembeti provides professional helpdesk services, Microsoft 365 & Entra ID solutions,
+          secure cloud infrastructure and reliable networking support for businesses across South Africa.
+        </p>
 
         <div class="cta">
-          <a class="btn btn-primary" onclick="toggleSection('contact')">Get support</a>
-          <a class="btn btn-ghost" onclick="toggleSection('services')">Our services</a>
-          <a class="btn btn-ghost" onclick="toggleSection('pricing-section')">View pricing</a>
-          <a class="btn btn-ghost" onclick="toggleSection('about-section')">About us</a>
+          <a class="btn btn-primary" href="#contact">Get support</a>
+          <a class="btn btn-ghost" href="#services">Our services</a>
+          <a class="btn btn-ghost" href="#pricing">Pricing</a>
         </div>
       </div>
 
       <aside id="contact" class="right-card fade-up">
-        <h3 style="margin-top:0">Contact us</h3>
+        <h3>Contact Us</h3>
         <div class="contact-quick">
-          <a href="tel:+27792568339">📞 Call: +27 79 256 8339</a>
-          <a href="tel:+27733014988">📞 Call: +27 75 260 5225</a>
-          <a href="mailto:Akinstonptyltd@Gmail.com">✉️ Email: Akinstonptyltd@Gmail.com</a>
-          <div style="font-size:13px;color:var(--muted)">Open hours: Mon–Fri, 08:00–17:00</div>
+          <a href="tel:+27792568339">📞 +27 79 256 8339</a>
+          <a href="tel:+27752605225">📞 +27 75 260 5225</a>
+          <a href="mailto:info@minyembeti.co.za">✉️ info@minyembeti.co.za</a>
+          <small style="color:var(--muted)">Mon–Fri • 08:00–17:00</small>
         </div>
       </aside>
     </main>
 
-    <section id="services" class="services">
-      <div class="hero-card">
-        <h3>Our Core Services</h3>
-        <div class="services-grid" style="margin-top:12px">
-          <div class="service">
-            <h4>Helpdesk & Managed Support</h4>
-            <p>Ticketing, remote support, SLA-driven services, onboarding and reporting.</p>
-          </div>
-          <div class="service">
-            <h4>Microsoft 365 & Entra ID</h4>
-            <p>Setup, migration, mailbox & identity management with top-level security.</p>
-          </div>
-          <div class="service">
-            <h4>Networking & Infrastructure</h4>
-            <p>Wi-Fi, switches, firewalls and secure corporate networking solutions.</p>
-          </div>
+    <section id="services">
+      <h3>Our Core Services</h3>
+      <div class="services-grid">
+        <div class="service">
+          <h4>Helpdesk & Managed IT</h4>
+          <p>Remote support, SLA-driven ticketing, onboarding and proactive monitoring.</p>
+        </div>
+        <div class="service">
+          <h4>Microsoft 365 & Entra ID</h4>
+          <p>Setup, migrations, identity management and enterprise-grade security.</p>
+        </div>
+        <div class="service">
+          <h4>Networking & Infrastructure</h4>
+          <p>Secure Wi-Fi, firewalls, switching and business-grade networking solutions.</p>
         </div>
       </div>
     </section>
 
-    <section id="pricing-section" class="services">
-      <div class="hero-card">
-        <h3>Pricing Overview</h3>
-        <p style="color:#333">Licenses and software costs are purchased directly by the client — we help guide and manage them, but you pay vendors directly (no hidden markup). Our fees only cover setup and ongoing support.</p>
-        <div class="services-grid" style="margin-top:12px">
-          <div class="service">
-            <h4>Microsoft 365</h4>
-            <p>Business Basic: R1,400 – R1,800 per user/year<br>
-               Business Standard: R2,500 – R3,200 per user/year<br>
-               Business Premium: R3,800 – R4,800 per user/year</p>
-          </div>
-          <div class="service">
-            <h4>Azure / Entra ID</h4>
-            <p>Premium P1: R140 – R160 per user/month<br>
-               Premium P2: R220 – R250 per user/month<br>
-               Small VM/Storage: R1,000 – R5,000 per month (usage-based)</p>
-          </div>
-          <div class="service">
-            <h4>Security & Backup</h4>
-            <p>Antivirus (per device/month): R50 – R80<br>
-               Veeam O365 Backup: R40 – R60 per user/month</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="pricing">
+      <h3>Pricing Overview</h3>
+      <p style="color:#334155">Licenses are purchased directly by clients. Our fees cover setup, management and ongoing support only.</p>
 
-    <section id="about-section" class="services">
-      <div class="hero-card">
-        <h3>About Akinston</h3>
-        <p>Founded in 2020, Akinston focuses on providing businesses with reliable, transparent, and professional IT services. We believe in empowering organizations with the right technology while keeping costs clear and predictable.</p>
-        <p>We specialize in three core areas: Helpdesk support for day-to-day operations, Cloud services with Microsoft 365 and Entra ID, and secure Networking solutions. Our mission is to ensure your business runs smoothly, securely, and efficiently without over-promising, but by delivering quality support every time.</p>
-        <h4>What We Will Do (High-Level Steps)</h4>
-        <ol>
-          <li><strong>Meet & Understand Your Needs</strong> – Quick discussion to learn about your current setup, pain points, and goals.</li>
-          <li><strong>Assessment</strong> – Simple check of your current computers, network, and email systems (no disruption to your work).</li>
-          <li><strong>Proposal & Budget</strong> – We show you a clear cost breakdown:
-            <ul>
-              <li>Licenses and software (e.g., Microsoft 365 for email and apps)</li>
-              <li>Any hardware or upgrades you might need (if any)</li>
-              <li>Our setup time and monthly support fee</li>
-            </ul>
-          </li>
-          <li><strong>Approval & Ordering</strong> – Using your approved budget, we order the licenses and equipment.</li>
-          <li><strong>Setup & Migration</strong> – We configure everything, move your email or files if needed, and train your team.</li>
-          <li><strong>Handover & Support</strong> – We provide simple instructions, contact info for help, and ongoing support under a service agreement.</li>
-        </ol>
+      <div class="services-grid">
+        <div class="service">
+          <h4>Microsoft 365</h4>
+          <p>
+            Business Basic: R1,400 – R1,800 / year<br>
+            Business Standard: R2,500 – R3,200 / year<br>
+            Business Premium: R3,800 – R4,800 / year
+          </p>
+        </div>
+        <div class="service">
+          <h4>Azure & Entra ID</h4>
+          <p>
+            Entra P1: R140 – R160 / month<br>
+            Entra P2: R220 – R250 / month<br>
+            Azure usage: R1,000+
+          </p>
+        </div>
+        <div class="service">
+          <h4>Security & Backup</h4>
+          <p>
+            Antivirus: R50 – R80 / device<br>
+            M365 Backup: R40 – R60 / user
+          </p>
+        </div>
       </div>
     </section>
 
     <footer>
-      <p><strong>Akinston</strong> — Professional IT Support • South Africa</p>
-      <p>BEE Status: Level 1 | Company Start: 10/11/2020 | Registration No: 2020/854767/07</p>
-      <p>© 2025 Akinston. All rights reserved.</p>
+      <p><strong>Minyembeti Ltd</strong> — Professional IT Support • South Africa</p>
+      <p>BEE Level 1 | Registered 10/11/2020 | Reg: 2020/854767/07</p>
+      <p>© 2025 Minyembeti Ltd</p>
     </footer>
-  </div>
 
-  <script>
-    function toggleSection(id){
-      const sections = ['services','pricing-section','about-section'];
-      sections.forEach(sec => {
-        const el = document.getElementById(sec);
-        if(el){ el.style.display = (sec === id) ? 'block' : 'none'; }
-      });
-    }
-  </script>
+  </div>
 </body>
 </html>
