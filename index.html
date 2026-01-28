@@ -22,6 +22,7 @@
     }
 
     *{box-sizing:border-box}
+
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
@@ -29,39 +30,63 @@
       color:var(--text);
     }
 
-    .container{max-width:1100px;margin:0 auto;padding:32px}
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:32px;
+    }
 
+    /* HEADER */
     header{
       display:flex;
       align-items:center;
-      margin-bottom:40px;
+      margin-bottom:48px;
     }
 
-    .brand{display:flex;gap:14px;align-items:center}
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
     .logo{
-      width:56px;height:56px;border-radius:14px;
+      width:56px;
+      height:56px;
+      border-radius:14px;
       background:var(--gradient);
-      display:flex;align-items:center;justify-content:center;
-      color:white;font-weight:800;font-size:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:800;
+      font-size:20px;
     }
 
     .brand h1{margin:0;font-size:20px}
     .brand p{margin:0;font-size:13px;color:var(--muted)}
 
     /* HERO */
-.hero{
-  display:grid;
-  grid-template-columns:1fr 420px;
-  gap:32px;
-  align-items:stretch; /* THIS is the key */
-}
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:32px;
+      align-items:stretch;
+    }
 
-.hero-card,
-.right-card{
-  height:100%;
-  display:flex;
-  flex-direction:column;
-}
+    .hero-card,
+    .right-card{
+      background:var(--card);
+      padding:36px;
+      border-radius:20px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.08);
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      animation:fadeUp .7s ease forwards;
+    }
+
+    .hero-card{animation-delay:.05s}
+    .right-card{animation-delay:.15s}
 
     .eyebrow{
       display:inline-block;
@@ -71,35 +96,52 @@
       border-radius:999px;
       font-weight:600;
       font-size:13px;
+      width:max-content;
     }
 
-    h2{font-size:36px;margin:16px 0 12px}
-    p.lead{color:#334155;line-height:1.6}
+    h2{
+      font-size:36px;
+      margin:18px 0 12px;
+    }
+
+    p.lead{
+      color:#334155;
+      line-height:1.6;
+      max-width:520px;
+    }
 
     .btn{
-      padding:14px 20px;
+      margin-top:auto;
+      padding:14px 22px;
       border-radius:14px;
       border:0;
       cursor:pointer;
       font-weight:700;
       text-decoration:none;
-      display:inline-block;
       background:var(--gradient);
       color:white;
-      margin-top:18px;
+      width:max-content;
+      transition:transform .25s ease, box-shadow .25s ease;
     }
 
-    /* SIDE CARD */
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 24px rgba(10,92,255,0.35);
+    }
+
+    /* RIGHT CARD */
     .right-card{
-      background:var(--card);
-      padding:26px;
-      border-radius:18px;
-      box-shadow:0 12px 30px rgba(0,0,0,0.08);
+      justify-content:center;
+    }
+
+    .right-card h4{
+      margin-top:0;
+      font-size:20px;
     }
 
     /* SECTIONS */
     section{
-      margin-top:72px;
+      margin-top:80px;
     }
 
     section::before{
@@ -107,23 +149,27 @@
       display:block;
       height:1px;
       background:linear-gradient(to right, transparent, #cbd5f5, transparent);
-      margin-bottom:40px;
+      margin-bottom:48px;
     }
 
-    h3{font-size:26px;margin-bottom:12px}
+    h3{
+      font-size:26px;
+      margin-bottom:12px;
+    }
 
     .grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:18px;
+      gap:20px;
     }
 
     .card{
       background:var(--card);
-      padding:24px;
+      padding:26px;
       border-radius:18px;
       box-shadow:0 10px 24px rgba(0,0,0,0.06);
-      transition:.25s ease;
+      transition:transform .25s ease, box-shadow .25s ease;
+      animation:fadeUp .7s ease forwards;
     }
 
     .card:hover{
@@ -150,8 +196,8 @@
 
     /* FOOTER */
     footer{
-      margin-top:90px;
-      padding:30px;
+      margin-top:100px;
+      padding:32px;
       border-top:1px solid rgba(0,0,0,0.08);
       text-align:center;
       color:var(--muted);
@@ -159,14 +205,22 @@
     }
 
     /* ANIMATIONS */
-    .fade-up{animation:fadeUp .6s ease forwards}
     @keyframes fadeUp{
-      from{opacity:0;transform:translateY(14px)}
-      to{opacity:1;transform:none}
+      from{
+        opacity:0;
+        transform:translateY(18px);
+      }
+      to{
+        opacity:1;
+        transform:none;
+      }
     }
 
+    /* RESPONSIVE */
     @media(max-width:900px){
-      .hero{grid-template-columns:1fr}
+      .hero{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
@@ -174,6 +228,7 @@
 <body>
 <div class="container">
 
+  <!-- HEADER -->
   <header>
     <div class="brand">
       <div class="logo">ML</div>
@@ -186,26 +241,25 @@
 
   <!-- HERO -->
   <main class="hero">
-    <div class="hero-card fade-up">
+    <div class="hero-card">
       <span class="eyebrow">Trusted IT Partner • Since 2020</span>
-      <h2>We take care of your IT, so you can focus on your business</h2>
+      <h2>We take care of your IT, so you can focus on running your business</h2>
       <p class="lead">
-        If computers, email, internet or security issues slow your business down,
-        we help you fix them properly — without confusing technical jargon.
+        When email, computers, internet or security issues slow you down,
+        we step in and handle it properly — without confusing technical language.
       </p>
-
       <a href="#appointment" class="btn">Book a free consultation</a>
     </div>
 
-    <aside class="right-card fade-up">
+    <aside class="right-card">
       <h4>Who we help</h4>
       <p>
         We work with small and growing businesses that don’t have an in-house IT team
-        but still need reliable systems, email, and secure access.
+        but still need reliable systems and secure access.
       </p>
       <p>
-        Whether you have 3 employees or 50, we tailor the setup to what you actually need —
-        no unnecessary extras.
+        Whether you have a few employees or a growing team, we make sure your IT
+        works quietly in the background — the way it should.
       </p>
     </aside>
   </main>
@@ -215,24 +269,24 @@
     <h3>How we help your business</h3>
     <div class="grid">
       <div class="card">
-        <h4>Fix daily IT problems</h4>
+        <h4>Fix everyday IT problems</h4>
         <p>
-          When email stops working, computers are slow, or users are locked out,
-          we step in quickly to get your team back to work.
+          From email not working to slow computers, we respond quickly
+          and get your team back to work with minimal disruption.
         </p>
       </div>
       <div class="card">
-        <h4>Set things up properly</h4>
+        <h4>Set things up the right way</h4>
         <p>
-          We configure email, cloud access, security and backups correctly from the start,
-          so you don’t run into problems later.
+          We configure email, cloud access, security and backups properly from the start,
+          preventing costly issues later.
         </p>
       </div>
       <div class="card">
-        <h4>Keep your data safe</h4>
+        <h4>Protect your business data</h4>
         <p>
-          We protect your business data with secure logins, backups and basic security best practices —
-          explained in simple terms.
+          We put the right security and backup measures in place,
+          explained clearly so you understand what you’re paying for.
         </p>
       </div>
     </div>
@@ -242,9 +296,9 @@
   <section id="appointment">
     <h3>Book a free consultation</h3>
     <p style="max-width:700px;color:#334155">
-      Not sure what you need? That’s completely fine.
+      Not sure what you need? That’s okay.
       Leave your details below and we’ll contact you to understand your situation
-      and explain your options clearly — no obligation.
+      and explain your options — no pressure, no obligation.
     </p>
 
     <div class="card" style="max-width:520px">
@@ -252,13 +306,13 @@
         <input type="text" placeholder="Your full name" required>
         <input type="email" placeholder="Email address" required>
         <input type="tel" placeholder="Phone number">
-        <textarea rows="4" placeholder="Briefly describe your issue or what you need help with"></textarea>
+        <textarea rows="4" placeholder="Briefly describe what you need help with"></textarea>
         <button class="btn" type="submit">Request a call back</button>
       </form>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- FOOTER -->
   <footer>
     <p><strong>Minyembeti Ltd</strong> — Professional IT Support • South Africa</p>
     <p>📞 +27 79 256 8339 • ✉️ info@minyembeti.co.za</p>
