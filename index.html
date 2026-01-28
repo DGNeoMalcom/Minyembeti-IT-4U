@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minyembeti Ltd — Professional IT Solutions</title>
+  <title>Minyembeti Ltd — Reliable IT Support for Growing Businesses</title>
 
-  <meta name="description" content="Minyembeti Ltd — Professional IT support, Microsoft 365, Entra ID, Cloud and Networking solutions in South Africa." />
+  <meta name="description" content="Minyembeti Ltd provides reliable IT support, Microsoft 365, cloud and networking services for businesses in South Africa. Book a free consultation." />
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
@@ -13,7 +13,6 @@
     :root{
       --primary:#0a5cff;
       --primary-soft:#e8f0ff;
-      --secondary:#22c55e;
       --text:#0f172a;
       --muted:#64748b;
       --bg:#f8fafc;
@@ -23,7 +22,7 @@
     }
 
     *{box-sizing:border-box}
-    html,body{
+    body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       background:var(--bg);
@@ -32,12 +31,10 @@
 
     .container{max-width:1100px;margin:0 auto;padding:32px}
 
-    /* Header */
     header{
       display:flex;
-      justify-content:space-between;
       align-items:center;
-      margin-bottom:32px;
+      margin-bottom:40px;
     }
 
     .brand{display:flex;gap:14px;align-items:center}
@@ -47,18 +44,11 @@
       display:flex;align-items:center;justify-content:center;
       color:white;font-weight:800;font-size:20px;
     }
+
     .brand h1{margin:0;font-size:20px}
     .brand p{margin:0;font-size:13px;color:var(--muted)}
 
-    nav a{
-      margin-left:18px;
-      text-decoration:none;
-      font-weight:600;
-      color:var(--primary);
-      cursor:pointer;
-    }
-
-    /* Hero */
+    /* HERO */
     .hero{
       display:grid;
       grid-template-columns:1fr 420px;
@@ -68,8 +58,8 @@
 
     .hero-card{
       background:var(--card);
-      padding:32px;
-      border-radius:18px;
+      padding:36px;
+      border-radius:20px;
       box-shadow:0 20px 40px rgba(0,0,0,0.08);
     }
 
@@ -83,51 +73,33 @@
       font-size:13px;
     }
 
-    h2{font-size:34px;margin:14px 0 10px}
+    h2{font-size:36px;margin:16px 0 12px}
     p.lead{color:#334155;line-height:1.6}
 
-    .cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
     .btn{
-      padding:12px 18px;
+      padding:14px 20px;
       border-radius:14px;
       border:0;
       cursor:pointer;
       font-weight:700;
       text-decoration:none;
-    }
-    .btn-primary{
+      display:inline-block;
       background:var(--gradient);
       color:white;
+      margin-top:18px;
     }
-    .btn-ghost{
-      background:white;
-      border:1px solid var(--primary);
-      color:var(--primary);
-    }
-    .btn-ghost:hover{background:var(--primary-soft)}
 
-    /* Contact card */
+    /* SIDE CARD */
     .right-card{
       background:var(--card);
-      padding:24px;
-      border-radius:16px;
+      padding:26px;
+      border-radius:18px;
       box-shadow:0 12px 30px rgba(0,0,0,0.08);
     }
 
-    .contact-quick a{
-      display:block;
-      text-decoration:none;
-      background:var(--glass);
-      padding:12px;
-      border-radius:12px;
-      color:var(--text);
-      margin-bottom:10px;
-      font-weight:500;
-    }
-
-    /* Sections */
+    /* SECTIONS */
     section{
-      margin-top:64px;
+      margin-top:72px;
     }
 
     section::before{
@@ -138,147 +110,162 @@
       margin-bottom:40px;
     }
 
-    .services-grid{
+    h3{font-size:26px;margin-bottom:12px}
+
+    .grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin-top:16px;
+      gap:18px;
     }
 
-    .service{
+    .card{
       background:var(--card);
-      padding:22px;
-      border-radius:16px;
+      padding:24px;
+      border-radius:18px;
       box-shadow:0 10px 24px rgba(0,0,0,0.06);
-      transition:all .25s ease;
+      transition:.25s ease;
     }
 
-    .service:hover{
+    .card:hover{
       transform:translateY(-4px);
       box-shadow:0 18px 42px rgba(0,0,0,0.12);
     }
 
+    /* FORM */
+    form{
+      display:grid;
+      gap:14px;
+      margin-top:16px;
+    }
+
+    input, textarea{
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #cbd5f5;
+      font-family:Inter;
+      font-size:14px;
+    }
+
+    textarea{resize:vertical}
+
+    /* FOOTER */
     footer{
-      margin-top:80px;
-      padding:24px;
+      margin-top:90px;
+      padding:30px;
       border-top:1px solid rgba(0,0,0,0.08);
       text-align:center;
       color:var(--muted);
       font-size:14px;
     }
 
-    /* Animations */
-    .fade-up{
-      animation:fadeUp .6s ease forwards;
-    }
+    /* ANIMATIONS */
+    .fade-up{animation:fadeUp .6s ease forwards}
     @keyframes fadeUp{
       from{opacity:0;transform:translateY(14px)}
       to{opacity:1;transform:none}
     }
 
-    /* Responsive */
     @media(max-width:900px){
       .hero{grid-template-columns:1fr}
-      nav{display:none}
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
 
-    <header>
-      <div class="brand">
-        <div class="logo">ML</div>
-        <div>
-          <h1>Minyembeti Ltd</h1>
-          <p>IT Support • Microsoft 365 • Entra ID • Cloud & Networking</p>
-        </div>
+  <header>
+    <div class="brand">
+      <div class="logo">ML</div>
+      <div>
+        <h1>Minyembeti Ltd</h1>
+        <p>Reliable IT Support for Growing Businesses</p>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main class="hero">
-      <div class="hero-card fade-up">
-        <span class="eyebrow">Trusted IT Partner • Since 2020</span>
-        <h2>Smart IT support that keeps your business running</h2>
-        <p class="lead">
-          Minyembeti provides professional helpdesk services, Microsoft 365 & Entra ID solutions,
-          secure cloud infrastructure and reliable networking support for businesses across South Africa.
+  <!-- HERO -->
+  <main class="hero">
+    <div class="hero-card fade-up">
+      <span class="eyebrow">Trusted IT Partner • Since 2020</span>
+      <h2>We take care of your IT, so you can focus on your business</h2>
+      <p class="lead">
+        If computers, email, internet or security issues slow your business down,
+        we help you fix them properly — without confusing technical jargon.
+      </p>
+
+      <a href="#appointment" class="btn">Book a free consultation</a>
+    </div>
+
+    <aside class="right-card fade-up">
+      <h4>Who we help</h4>
+      <p>
+        We work with small and growing businesses that don’t have an in-house IT team
+        but still need reliable systems, email, and secure access.
+      </p>
+      <p>
+        Whether you have 3 employees or 50, we tailor the setup to what you actually need —
+        no unnecessary extras.
+      </p>
+    </aside>
+  </main>
+
+  <!-- HOW WE HELP -->
+  <section>
+    <h3>How we help your business</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Fix daily IT problems</h4>
+        <p>
+          When email stops working, computers are slow, or users are locked out,
+          we step in quickly to get your team back to work.
         </p>
-
-        <div class="cta">
-          <a class="btn btn-primary" href="#contact">Get support</a>
-          <a class="btn btn-ghost" href="#services">Our services</a>
-          <a class="btn btn-ghost" href="#pricing">Pricing</a>
-        </div>
       </div>
-
-      <aside id="contact" class="right-card fade-up">
-        <h3>Contact Us</h3>
-        <div class="contact-quick">
-          <a href="tel:+27792568339">📞 +27 79 256 8339</a>
-          <a href="tel:+27752605225">📞 +27 75 260 5225</a>
-          <a href="mailto:info@minyembeti.co.za">✉️ info@minyembeti.co.za</a>
-          <small style="color:var(--muted)">Mon–Fri • 08:00–17:00</small>
-        </div>
-      </aside>
-    </main>
-
-    <section id="services">
-      <h3>Our Core Services</h3>
-      <div class="services-grid">
-        <div class="service">
-          <h4>Helpdesk & Managed IT</h4>
-          <p>Remote support, SLA-driven ticketing, onboarding and proactive monitoring.</p>
-        </div>
-        <div class="service">
-          <h4>Microsoft 365 & Entra ID</h4>
-          <p>Setup, migrations, identity management and enterprise-grade security.</p>
-        </div>
-        <div class="service">
-          <h4>Networking & Infrastructure</h4>
-          <p>Secure Wi-Fi, firewalls, switching and business-grade networking solutions.</p>
-        </div>
+      <div class="card">
+        <h4>Set things up properly</h4>
+        <p>
+          We configure email, cloud access, security and backups correctly from the start,
+          so you don’t run into problems later.
+        </p>
       </div>
-    </section>
-
-    <section id="pricing">
-      <h3>Pricing Overview</h3>
-      <p style="color:#334155">Licenses are purchased directly by clients. Our fees cover setup, management and ongoing support only.</p>
-
-      <div class="services-grid">
-        <div class="service">
-          <h4>Microsoft 365</h4>
-          <p>
-            Business Basic: R1,400 – R1,800 / year<br>
-            Business Standard: R2,500 – R3,200 / year<br>
-            Business Premium: R3,800 – R4,800 / year
-          </p>
-        </div>
-        <div class="service">
-          <h4>Azure & Entra ID</h4>
-          <p>
-            Entra P1: R140 – R160 / month<br>
-            Entra P2: R220 – R250 / month<br>
-            Azure usage: R1,000+
-          </p>
-        </div>
-        <div class="service">
-          <h4>Security & Backup</h4>
-          <p>
-            Antivirus: R50 – R80 / device<br>
-            M365 Backup: R40 – R60 / user
-          </p>
-        </div>
+      <div class="card">
+        <h4>Keep your data safe</h4>
+        <p>
+          We protect your business data with secure logins, backups and basic security best practices —
+          explained in simple terms.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <p><strong>Minyembeti Ltd</strong> — Professional IT Support • South Africa</p>
-      <p>BEE Level 1 | Registered 10/11/2020 | Reg: 2020/854767/07</p>
-      <p>© 2025 Minyembeti Ltd</p>
-    </footer>
+  <!-- APPOINTMENT -->
+  <section id="appointment">
+    <h3>Book a free consultation</h3>
+    <p style="max-width:700px;color:#334155">
+      Not sure what you need? That’s completely fine.
+      Leave your details below and we’ll contact you to understand your situation
+      and explain your options clearly — no obligation.
+    </p>
 
-  </div>
+    <div class="card" style="max-width:520px">
+      <form>
+        <input type="text" placeholder="Your full name" required>
+        <input type="email" placeholder="Email address" required>
+        <input type="tel" placeholder="Phone number">
+        <textarea rows="4" placeholder="Briefly describe your issue or what you need help with"></textarea>
+        <button class="btn" type="submit">Request a call back</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer>
+    <p><strong>Minyembeti Ltd</strong> — Professional IT Support • South Africa</p>
+    <p>📞 +27 79 256 8339 • ✉️ info@minyembeti.co.za</p>
+    <p>BEE Level 1 | Registered 10/11/2020 | Reg: 2020/854767/07</p>
+    <p>© 2025 Minyembeti Ltd</p>
+  </footer>
+
+</div>
 </body>
 </html>
